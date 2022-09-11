@@ -11,6 +11,11 @@ const findToolbar = (htmlElement: HTMLElement): HTMLElement | null => {
   return toolbar;
 };
 
+const findAllToolbar = (): HTMLElement[] => {
+  const toolbars = select.all("markdown-toolbar");
+  return toolbars.filter(Boolean);
+};
+
 const updateCommits = (htmlElement: HTMLElement) => {
   removeAlreadyCreatedDetail(htmlElement);
   htmlElement.appendChild(createCommitsCollapse(getCommitElements()));
@@ -72,9 +77,28 @@ function initBottomCommentBox() {
   });
 }
 
-function init() {
-  initBottomCommentBox();
-  initDiscussions();
+function updateAllToolbar() {
+  const allToolbar = findAllToolbar();
+  allToolbar.forEach(updateCommits);
 }
+
+function init() {
+  updateAllToolbar();
+  whenCommitUpdated(updateAllToolbar);
+
+  // initBottomCommentBox();
+  // initDiscussions();
+}
+
+function whenCommitUpdated(callback: () => void) {
+  const discussions = getDiscussions();
+  discussions.forEach((discussion) => {
+    observeElement(discussion, callback);
+  });
+}
+
+// observe 하는 부분은 discussion
+
+// 업데이트 해야 하는 부분들은 툴바
 
 init();
