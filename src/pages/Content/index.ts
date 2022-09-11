@@ -25,6 +25,10 @@ const detect = (targetElement: HTMLElement) => {
 };
 
 function init() {
+  for (const toolbar of select.all("markdown-toolbar")) {
+    detect(toolbar);
+  }
+
   const detectTargets = select.all("div.js-discussion");
   detectTargets.map((target) => {
     detect(target);
