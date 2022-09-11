@@ -2,6 +2,7 @@ import select from "select-dom";
 import getCommitElements from "@pages/Content/getCommitElements";
 import createCommitsCollapse from "@pages/Content/createCommitsCollapse";
 import removeAlreadyCreatedDetail from "@pages/Content/removeAlreadyCreatedDetail";
+import { DETAIL_CLASS_NAME } from "@pages/Content/constansts";
 
 const findAllToolbar = (): HTMLElement[] => {
   const toolbars = select.all("markdown-toolbar");
@@ -9,8 +10,10 @@ const findAllToolbar = (): HTMLElement[] => {
 };
 
 const updateCommits = (htmlElement: HTMLElement): void => {
-  removeAlreadyCreatedDetail(htmlElement);
-  htmlElement.appendChild(createCommitsCollapse(getCommitElements()));
+  removeAlreadyCreatedDetail(htmlElement, DETAIL_CLASS_NAME);
+  htmlElement.appendChild(
+    createCommitsCollapse(getCommitElements(), DETAIL_CLASS_NAME)
+  );
 };
 
 const observeElement = (element: HTMLElement, callback: () => void) => {

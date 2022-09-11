@@ -1,14 +1,13 @@
-import { DETAIL_CLASS_NAME } from "@pages/Content/constansts";
-
 function removeElementFrom(targetElements: HTMLCollectionOf<Element>) {
   for (const targetElement of targetElements) {
     targetElement.remove();
   }
 }
 export default function removeAlreadyCreatedDetail(
-  targetElement?: HTMLElement
+  targetElement: HTMLElement,
+  detailClassName: string
 ) {
-  const details = targetElement?.getElementsByClassName(DETAIL_CLASS_NAME);
+  const details = targetElement?.getElementsByClassName(detailClassName);
   if (!details) {
     return;
   }
