@@ -27,6 +27,7 @@ const detect = (targetElement: HTMLElement) => {
 function init() {
   for (const toolbar of select.all("markdown-toolbar")) {
     detect(toolbar);
+    toolbar.appendChild(createCommitsCollapse(getCommitElements()));
   }
 
   const detectTargets = select.all("div.js-discussion");
