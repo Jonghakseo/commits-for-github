@@ -57,6 +57,7 @@ const getBottomCommentBox = (): HTMLElement | null => {
   if (!bottomCommentBox) {
     return null;
   }
+
   return bottomCommentBox;
 };
 
