@@ -6,6 +6,7 @@ export default function getCommitElements(): HTMLElement[] {
     .filter(isAnchorElement)
     .map(getCommitInfo);
   const commitElements: HTMLElement[] = prCommitInfos.map(createCommitElement);
+
   console.log("test")
   return commitElements;
 }
