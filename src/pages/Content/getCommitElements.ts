@@ -7,6 +7,7 @@ export default function getCommitElements(): HTMLElement[] {
     .map(getCommitInfo);
   const commitElements: HTMLElement[] = prCommitInfos.map(createCommitElement);
 
+  
   return commitElements;
 }
 
